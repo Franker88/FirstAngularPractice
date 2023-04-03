@@ -5,3 +5,12 @@
     gap: 1rem;
     padding-bottom: 1rem;
 }
+
+.show-hide {
+    margin: 10px;
+}
+
+.table {
+    width: 90%;
+    margin: 0 30px;
+}

@@ -1,6 +1,27 @@
 <router-outlet></router-outlet>
 <app-header></app-header>
-<div id="card-div">
+<button class="btn btn-primary col-2 show-hide" (click)="showHide()" [ngStyle]="{'font-style':show==true?'italic':'normal'}">Mostrar/Ocultar</button>
+<button class="btn btn-primary col-2 show-hide" (click)="showHide()" [ngClass]="show==true?'bg bg-success':'badge bg-secondary'">Mostrar/Ocultar</button>
+<div id="card-div" *ngIf="show">
     <app-card [inputData]="card" *ngFor="let card of arrayTarjetas"></app-card>
 </div>
+<table class="table">
+    <thead>
+        <th>Nro</th>
+        <th>Title</th>
+        <th>Subtitle</th>
+    </thead>
+    <tbody>
+        <tr *ngFor ="let info of arrayTarjetas; let i = index" [ngSwitch]="info.title">
+            <td>{{i+1}}</td>
+            <td>
+                <span *ngSwitchCase="'Image-1'" class="badge bg-success">{{info.title}}</span>
+                <span *ngSwitchCase="'Image-2'" class="badge bg-secondary">{{info.title}}</span>
+                <span *ngSwitchCase="'Image-3'" class="badge bg-danger">{{info.title}}</span>
+                <span *ngSwitchDefault class="badge bg-light">{{info.title}}</span>
+            </td>
+            <td>{{info.subtitle}}</td>
+        </tr>
+    </tbody>
+</table>
 <app-slidebar></app-slidebar>
